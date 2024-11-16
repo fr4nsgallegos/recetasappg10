@@ -52,6 +52,31 @@ class TextfieldPage extends StatelessWidget {
                   },
                 ),
                 SizedBox(
+                  height: 16,
+                ),
+                TextFormField(
+                  controller: _contrasenaController,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Ingresa una contraseña";
+                    } else if (value.length < 8) {
+                      return "La contraseña debe tener al menor 8 caracateres";
+                    } else {
+                      return null;
+                    }
+                  },
+                  decoration: InputDecoration(
+                    hintText: "Ingresa tu Contraseña",
+                    filled: true,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                  ),
+                ),
+                SizedBox(
                   height: 32,
                 ),
                 ElevatedButton(
@@ -62,6 +87,7 @@ class TextfieldPage extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text("Formulario validado"),
+                          backgroundColor: Colors.green,
                         ),
                       );
                     }
