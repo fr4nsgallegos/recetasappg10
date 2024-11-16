@@ -19,44 +19,62 @@ class ScrollPage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Scroll Page"),
       ),
-      body: SingleChildScrollView(
-        // scrollDirection: Axis.horizontal,
-        child: Column(
-          children: [
-            Text("CABECERA 1"),
-            SizedBox(
-              height: 200,
-              child: ListView.builder(
-                itemCount: 10,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => buildContainers("111"),
-              ),
-            ),
-            buildContainers("2"),
-            buildContainers("2"),
-            ...List.generate(
-              5,
-              (index) => Padding(
-                padding: EdgeInsets.all(16),
-                child: Text("HIJO"),
-              ),
-            ),
-            buildContainers("3"),
-            buildContainers("3"),
-            SizedBox(
-              height: 200,
-              child: ListView.separated(
-                  itemBuilder: (context, index) =>
-                      buildContainers("separated $index"),
-                  separatorBuilder: (context, index) => Container(
-                        width: 20,
-                        height: 20,
-                        color: Colors.black,
+      body: Column(
+        children: [
+          Text("CABECERA 1"),
+          Text("CABECERA 1"),
+          Text("CABECERA 1"),
+          Text("CABECERA 1"),
+          Text("CABECERA 1"),
+          Expanded(
+            child: SingleChildScrollView(
+              // scrollDirection: Axis.horizontal,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.arrow_left),
+                      SizedBox(
+                        height: 200,
+                        width: MediaQuery.of(context).size.width - 50,
+                        child: ListView.builder(
+                          itemCount: 10,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) =>
+                              buildContainers("111"),
+                        ),
                       ),
-                  itemCount: 20),
-            )
-          ],
-        ),
+                      Icon(Icons.arrow_right),
+                    ],
+                  ),
+                  buildContainers("2"),
+                  buildContainers("2"),
+                  ...List.generate(
+                    5,
+                    (index) => Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text("HIJO"),
+                    ),
+                  ),
+                  buildContainers("3"),
+                  buildContainers("3"),
+                  SizedBox(
+                    height: 200,
+                    child: ListView.separated(
+                        itemBuilder: (context, index) =>
+                            buildContainers("separated $index"),
+                        separatorBuilder: (context, index) => Container(
+                              width: 20,
+                              height: 20,
+                              color: Colors.black,
+                            ),
+                        itemCount: 20),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
