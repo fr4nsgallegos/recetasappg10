@@ -9,7 +9,7 @@ class TextfieldPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Text Field Pafe"),
+        title: Text("Text Field Page"),
       ),
       body: Center(
         //TEXTFIELD: Básico para capturar textos
@@ -43,6 +43,9 @@ class TextfieldPage extends StatelessWidget {
                       return "Por favor ingresa tu correo"; //la validación tuvo un error
                     } else if (value.length < 7) {
                       return "debe tener al menos 6 caracteres";
+                    } else if (!RegExp(r'^[\w\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                        .hasMatch(value)) {
+                      return "Ingrese un correo válido";
                     } else {
                       return null; //la validación fue exitosa
                     }
