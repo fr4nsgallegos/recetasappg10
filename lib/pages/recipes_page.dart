@@ -5,6 +5,8 @@ class RecipesPage extends StatelessWidget {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _preparationController = TextEditingController();
   final TextEditingController _urlController = TextEditingController();
+  final List<String> _options = ["Entrada", "Plato de fondo", "Postre"];
+  String? _selectedOption;
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +39,21 @@ class RecipesPage extends StatelessWidget {
                 icon: Icons.image),
 
             SizedBox(height: 20),
+            DropdownButtonFormField(
+              items: [
+                DropdownMenuItem(child: Text("JUAN"), value: "JUANITO"),
+                DropdownMenuItem(child: Text("PEDRO"), value: "PEDRITO"),
+                DropdownMenuItem(child: Text("LUIS"), value: "LUISITO"),
+              ],
+
+              //  _options.map((option) {
+              //   return DropdownMenuItem(child: child);
+              // }).toList(),
+              onChanged: (value) {
+                print(value);
+              },
+            ),
+
             Center(
               child: ElevatedButton(
                 onPressed: () {
