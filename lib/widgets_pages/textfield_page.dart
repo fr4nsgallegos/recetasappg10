@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recetasappg10/pages/home_page.dart';
 
 class TextfieldPage extends StatelessWidget {
   TextEditingController _emailController = new TextEditingController();
@@ -56,6 +57,7 @@ class TextfieldPage extends StatelessWidget {
                 ),
                 TextFormField(
                   controller: _contrasenaController,
+                  obscureText: true,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Ingresa una contraseña";
@@ -84,12 +86,23 @@ class TextfieldPage extends StatelessWidget {
                     //validar form
                     if (_formKey.currentState!.validate()) {
                       print(_formKey.currentState!.validate());
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text("Formulario validado"),
-                          backgroundColor: Colors.green,
-                        ),
-                      );
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(
+                      //     content: Text("Formulario validado"),
+                      //     backgroundColor: Colors.green,
+                      //   ),
+                      // );
+
+                      //NAVEGACIÓN ENTRE PANTALLAS CON NAVIGATOR DE MANERA NORMAL
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => HomePage(),
+                      //   ),
+                      // );
+
+                      //NAVEGACIÓN ENTRE PANTALLAS CON RUTAS NOMBRADAS
+                      Navigator.pushNamed(context, "/third");
                     }
                   },
                   child: Text("Enviar form"),

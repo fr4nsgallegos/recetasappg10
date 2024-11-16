@@ -42,6 +42,7 @@ class _ListViewPageState extends State<ListViewPage> {
       floatingActionButton: FloatingActionButton(onPressed: () {
         letrasList.add("x");
         setState(() {});
+        Navigator.pop(context);
       }),
       appBar: AppBar(
         title: Text("List view Page"),

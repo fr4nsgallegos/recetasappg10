@@ -7,8 +7,14 @@ import 'package:recetasappg10/widgets_pages/textfield_page.dart';
 void main() {
   runApp(
     MaterialApp(
-      home: TextfieldPage(),
+      // home: TextfieldPage(),
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        "/": (context) => TextfieldPage(),
+        "/second": (context) => HomePage(),
+        "/third": (context) => ScrollPage()
+      },
     ),
   );
 }
