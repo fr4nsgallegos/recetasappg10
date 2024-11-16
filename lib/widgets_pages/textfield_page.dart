@@ -83,7 +83,7 @@ class TextfieldPage extends StatelessWidget {
                   height: 32,
                 ),
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     //validar form
                     if (_formKey.currentState!.validate()) {
                       print(_formKey.currentState!.validate());
@@ -95,7 +95,7 @@ class TextfieldPage extends StatelessWidget {
                       // );
 
                       // NAVEGACIÓN ENTRE PANTALLAS CON NAVIGATOR DE MANERA NORMAL
-                      Navigator.push(
+                      final result = await Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => ScrollPage(
@@ -103,6 +103,9 @@ class TextfieldPage extends StatelessWidget {
                           ),
                         ),
                       );
+
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(SnackBar(content: Text(result)));
 
                       // NAVEGACIÓN ENTRE PANTALLAS CON RUTAS NOMBRADAS
                       // Navigator.pushNamed(context, "/third");

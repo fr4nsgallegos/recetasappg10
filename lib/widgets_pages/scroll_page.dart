@@ -20,6 +20,9 @@ class ScrollPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        Navigator.pop(context, "dato que se devuelve al log");
+      }),
       appBar: AppBar(
         title: Text("Scroll Page"),
         // leading: Container(),
