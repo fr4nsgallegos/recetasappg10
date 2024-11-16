@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class ScrollPage extends StatelessWidget {
+  String correo;
+
+  ScrollPage({required this.correo});
+
   Widget buildContainers(String text) {
     return Container(
       height: 50,
@@ -18,14 +22,13 @@ class ScrollPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Scroll Page"),
+        // leading: Container(),
       ),
       body: Column(
         children: [
           Text("CABECERA 1"),
-          Text("CABECERA 1"),
-          Text("CABECERA 1"),
-          Text("CABECERA 1"),
-          Text("CABECERA 1"),
+          Text("Tu correo es:"),
+          Text(correo),
           Expanded(
             child: SingleChildScrollView(
               // scrollDirection: Axis.horizontal,

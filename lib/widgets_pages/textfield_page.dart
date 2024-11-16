@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recetasappg10/pages/home_page.dart';
+import 'package:recetasappg10/widgets_pages/scroll_page.dart';
 
 class TextfieldPage extends StatelessWidget {
   TextEditingController _emailController = new TextEditingController();
@@ -93,16 +94,18 @@ class TextfieldPage extends StatelessWidget {
                       //   ),
                       // );
 
-                      //NAVEGACIÓN ENTRE PANTALLAS CON NAVIGATOR DE MANERA NORMAL
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //     builder: (context) => HomePage(),
-                      //   ),
-                      // );
+                      // NAVEGACIÓN ENTRE PANTALLAS CON NAVIGATOR DE MANERA NORMAL
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ScrollPage(
+                            correo: _emailController.text,
+                          ),
+                        ),
+                      );
 
-                      //NAVEGACIÓN ENTRE PANTALLAS CON RUTAS NOMBRADAS
-                      Navigator.pushNamed(context, "/third");
+                      // NAVEGACIÓN ENTRE PANTALLAS CON RUTAS NOMBRADAS
+                      // Navigator.pushNamed(context, "/third");
                     }
                   },
                   child: Text("Enviar form"),
