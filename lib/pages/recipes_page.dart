@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:recetasappg10/models/receta_model.dart';
 import 'package:recetasappg10/widgets/drop_down_widget.dart';
 import 'package:recetasappg10/widgets/form_item_widget.dart';
 import 'package:recetasappg10/widgets/porciones_check_widget.dart';
+import 'package:recetasappg10/widgets/receta_card_widget.dart';
 
 class RecipesPage extends StatefulWidget {
   @override
@@ -10,38 +12,66 @@ class RecipesPage extends StatefulWidget {
 
 class _RecipesPageState extends State<RecipesPage> {
   final TextEditingController _titleController = TextEditingController();
-
   final TextEditingController _preparationController = TextEditingController();
-
   final TextEditingController _urlController = TextEditingController();
-
   final List<String> _options = ["Entrada", "Plato de fondo", "Postre"];
 
   String? _selectedOption;
 
   bool _conPapa = false;
-  bool _conArroz = false;
   bool _conCamote = false;
+  RecetaModel recetaModel = RecetaModel(
+      title: "Lomo Saltado",
+      recipe:
+          "El Lomo Saltado peruano, también conocido como bistec salteado, es un plato de fusión muy popular que mezcla las tradiciones chinas del salteado con ingredientes peruanos que incluyen ají amarillo, cilantro y tomate. Este abundante plato principal suele ir acompañado de un esponjoso arroz blanco y papas fritas. Puedes sentirte libre de combinar esta receta de Lomo Saltado Peruano con tus guarniciones favoritas para crear tus propias fusiones culturales en la mesa. Aprende a hacer Lomo Saltado ahora con esta receta y a disfrutar.",
+      urlImage:
+          "https://images.pexels.com/photos/28503582/pexels-photo-28503582.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      type: "Plato de fondo",
+      withPapa: true,
+      withCamote: false);
+  List<RecetaModel> recetasList = [];
+
+  @override
+  void initState() {
+    recetasList.add(recetaModel);
+
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xff606c38),
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            'Formulario de Receta',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
-          backgroundColor: Color(0xff606c38),
-        ),
+        // appBar: AppBar(
+        //   centerTitle: true,
+        //   title: Text(
+        //     'Formulario de Receta',
+        //     style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        //   ),
+        //   backgroundColor: Color(0xff606c38),
+        // ),
         body: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ////CREAR FORM DONDE PUEDA LLENAR TITULO, PREPARACIÓN, URL DE LA IMAGEN.
+              SizedBox(
+                height: 16,
+              ),
+              Center(
+                child: Text(
+                  'Formulario de Receta',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ), ////CREAR FORM DONDE PUEDA LLENAR TITULO, PREPARACIÓN, URL DE LA IMAGEN.
               ///CRITERIOS PARA EL VALIDATOR
               ///TÍTULO: NO SEA NULL NI EMPEY Y AL MENOS 5 CARACTERES
               ///PREPARACIÓN: NO SEA NILL NI EMPTY Y AL MENOS 20 CARACTERES
@@ -120,6 +150,7 @@ class _RecipesPageState extends State<RecipesPage> {
 
               Center(
                 child: Container(
+                  margin: EdgeInsets.all(8),
                   width: 200,
                   height: 50,
                   child: ElevatedButton(
@@ -147,18 +178,53 @@ class _RecipesPageState extends State<RecipesPage> {
                             'La URL debe tener al menos 10 caracteres.');
                         return;
                       }
-
                       if (_selectedOption == null) {
                         showError(context, "Seleccione el tipo de plato");
+                        return;
                       }
 
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text('Formulario válido')),
-                      );
+                      RecetaModel recetaAux = RecetaModel(
+                          title: _titleController.text,
+                          recipe: _preparationController.text,
+                          urlImage: _urlController.text,
+                          type: _selectedOption!,
+                          withPapa: _conPapa,
+                          withCamote: _conCamote);
+                      recetasList.add(recetaAux);
+
+                      _titleController.clear();
+                      _preparationController.clear();
+                      _urlController.clear();
+                      _selectedOption = null;
+                      _conPapa = false;
+                      _conCamote = false;
+                      setState(() {});
+
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(content: Text('Formulario válido')),
+                      // );
                     },
                     child: Text('Guardar'),
                   ),
                 ),
+              ),
+
+              Expanded(
+                child: ListView.builder(
+                  itemCount: recetasList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return RecetaCardWidget(
+                      receta: recetasList[index],
+                    );
+                  },
+                ),
+
+                // child: ListView(
+                //   children: [
+                //     RecetaCardWidget(),
+                //     RecetaCardWidget(),
+                //   ],
+                // ),
               ),
             ],
           ),
