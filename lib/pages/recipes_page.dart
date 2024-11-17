@@ -68,12 +68,7 @@ class _RecipesPageState extends State<RecipesPage> {
                   _selectedOption = value;
                 },
               ),
-              Center(
-                child: Text(
-                  "Número de porciones",
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-              ),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
