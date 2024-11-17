@@ -29,7 +29,7 @@ class FormItemWidget extends StatelessWidget {
           ),
           hintText: hint,
           filled: true,
-          fillColor: Color(0xff606c38),
+          fillColor: Colors.black.withOpacity(0.35),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(25),

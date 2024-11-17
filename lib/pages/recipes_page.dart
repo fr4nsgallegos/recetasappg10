@@ -11,6 +11,7 @@ class RecipesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff606c38),
       appBar: AppBar(title: Text('Desafio : Formulario de Receta')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -38,20 +39,39 @@ class RecipesPage extends StatelessWidget {
                 hint: "Ingresa la url de la imagen",
                 icon: Icons.image),
 
-            SizedBox(height: 20),
             DropdownButtonFormField(
-              items: [
-                DropdownMenuItem(child: Text("JUAN"), value: "JUANITO"),
-                DropdownMenuItem(child: Text("PEDRO"), value: "PEDRITO"),
-                DropdownMenuItem(child: Text("LUIS"), value: "LUISITO"),
-              ],
+              items: _options.map((option) {
+                return DropdownMenuItem(
+                  child: Text(option),
+                  value: option,
+                );
+              }).toList(),
 
-              //  _options.map((option) {
-              //   return DropdownMenuItem(child: child);
-              // }).toList(),
+              // [
+              //   DropdownMenuItem(child: Text("JUAN"), value: "JUANITO"),
+              //   DropdownMenuItem(child: Text("PEDRO"), value: "PEDRITO"),
+              //   DropdownMenuItem(child: Text("LUIS"), value: "LUISITO"),
+              // ],
+
               onChanged: (value) {
                 print(value);
+                _selectedOption = value;
               },
+              //DECORACIÓN
+              decoration: InputDecoration(
+                labelText: "Selecciona el tipo de plato",
+                labelStyle: TextStyle(color: Colors.white),
+                filled: true,
+                fillColor: Colors.black.withOpacity(0.35),
+                border: OutlineInputBorder(
+                  borderSide: BorderSide.none,
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+              dropdownColor: Color(0xfff3D4622),
+              style: TextStyle(color: Colors.white),
+              icon: Icon(Icons.arrow_drop_down_circle),
+              menuMaxHeight: 200,
             ),
 
             Center(
