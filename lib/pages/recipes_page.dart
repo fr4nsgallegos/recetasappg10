@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:recetasappg10/widgets/drop_down_widget.dart';
 import 'package:recetasappg10/widgets/form_item_widget.dart';
+import 'package:recetasappg10/widgets/porciones_check_widget.dart';
 
-class RecipesPage extends StatelessWidget {
+class RecipesPage extends StatefulWidget {
+  @override
+  State<RecipesPage> createState() => _RecipesPageState();
+}
+
+class _RecipesPageState extends State<RecipesPage> {
   final TextEditingController _titleController = TextEditingController();
+
   final TextEditingController _preparationController = TextEditingController();
+
   final TextEditingController _urlController = TextEditingController();
+
   final List<String> _options = ["Entrada", "Plato de fondo", "Postre"];
+
   String? _selectedOption;
+
+  bool _conPapa = false;
+  bool _conArroz = false;
+  bool _conCamote = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +67,60 @@ class RecipesPage extends StatelessWidget {
                 funcionOnChanged: (value) {
                   _selectedOption = value;
                 },
+              ),
+              Center(
+                child: Text(
+                  "Número de porciones",
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  PorcionesCheckWidget(
+                      title: "Papa",
+                      value: _conPapa,
+                      onChanged: (value) {
+                        _conPapa = value ?? false;
+                        setState(() {});
+                      }),
+                  PorcionesCheckWidget(
+                      title: "Camo",
+                      value: _conCamote,
+                      onChanged: (value) {
+                        _conCamote = value ?? false;
+                        setState(() {});
+                      }),
+
+                  // SizedBox(
+                  //   width: MediaQuery.of(context).size.width / 4,
+                  //   child: CheckboxListTile(
+                  //     title: Text(
+                  //       "2",
+                  //       style: TextStyle(color: Colors.white),
+                  //     ),
+                  //     value: _isSelected,
+
+                  //     onChanged: (value) {
+                  //       _isSelected = value ?? false;
+                  //       setState(() {});
+                  //     },
+                  //     //personalizando checkboxlistile
+                  //     activeColor: Colors.green,
+                  //     checkColor: Colors.white,
+                  //     // secondary: Icon(
+                  //     //   Icons.food_bank,
+                  //     //   color: Colors.white,
+                  //     // ),
+                  //     tileColor: Colors.black.withOpacity(0.35),
+                  //     shape: RoundedRectangleBorder(
+                  //       borderRadius: BorderRadius.circular(25),
+                  //     ),
+                  //     hoverColor: Colors.white,
+                  //     selectedTileColor: Colors.blue,
+                  //   ),
+                  // ),
+                ],
               ),
 
               Center(
