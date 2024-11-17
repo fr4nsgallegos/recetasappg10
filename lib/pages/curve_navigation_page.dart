@@ -11,7 +11,7 @@ class CurveNavigationPage extends StatefulWidget {
 
 class _CurveNavigationPageState extends State<CurveNavigationPage> {
   int _activePageIndex = 0;
-
+  final pageController = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,11 +35,26 @@ class _CurveNavigationPageState extends State<CurveNavigationPage> {
         backgroundColor: pageDetails[_activePageIndex]
             .bgColor, //Color de fondo (debe ser similar a la pantalla que va a mostrar)
         onTap: (index) {
-          _activePageIndex = index;
+          pageController.animateToPage(
+            index,
+            duration: Duration(seconds: 1),
+            curve: Curves.decelerate,
+          );
+          // _activePageIndex = index;
           setState(() {});
         },
       ),
-      body: pageDetails[_activePageIndex].page,
+      body: PageView(
+        controller: pageController,
+        onPageChanged: (index) {
+          _activePageIndex = index;
+          setState(() {});
+        },
+        children: [
+          ...pageDetails.map((e) => e.page).toList(),
+        ],
+        // child: pageDetails[_activePageIndex].page
+      ),
     );
   }
 }
