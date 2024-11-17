@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class ScrollPage extends StatelessWidget {
   String correo;
-
-  ScrollPage({required this.correo});
+  Color bgColor;
+  ScrollPage({required this.correo, required this.bgColor});
 
   Widget buildContainers(String text) {
     return Container(
@@ -20,13 +20,14 @@ class ScrollPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgColor,
       floatingActionButton: FloatingActionButton(onPressed: () {
         Navigator.pop(context, "dato que se devuelve al log");
       }),
-      appBar: AppBar(
-        title: Text("Scroll Page"),
-        // leading: Container(),
-      ),
+      // appBar: AppBar(
+      //   title: Text("Scroll Page"),
+      //   // leading: Container(),
+      // ),
       body: Column(
         children: [
           Text("CABECERA 1"),

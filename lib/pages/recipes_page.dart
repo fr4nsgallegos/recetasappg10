@@ -6,6 +6,8 @@ import 'package:recetasappg10/widgets/porciones_check_widget.dart';
 import 'package:recetasappg10/widgets/receta_card_widget.dart';
 
 class RecipesPage extends StatefulWidget {
+  Color bgColor;
+  RecipesPage({required this.bgColor});
   @override
   State<RecipesPage> createState() => _RecipesPageState();
 }
@@ -43,7 +45,7 @@ class _RecipesPageState extends State<RecipesPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(0xff606c38),
+        backgroundColor: widget.bgColor,
         // appBar: AppBar(
         //   centerTitle: true,
         //   title: Text(

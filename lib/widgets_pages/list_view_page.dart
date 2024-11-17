@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ListViewPage extends StatefulWidget {
+  Color bgColor;
+
+  ListViewPage({required this.bgColor});
   @override
   State<ListViewPage> createState() => _ListViewPageState();
 }
@@ -39,14 +42,15 @@ class _ListViewPageState extends State<ListViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: widget.bgColor,
       floatingActionButton: FloatingActionButton(onPressed: () {
         letrasList.add("x");
         setState(() {});
         Navigator.pop(context);
       }),
-      appBar: AppBar(
-        title: Text("List view Page"),
-      ),
+      // appBar: AppBar(
+      //   title: Text("List view Page"),
+      // ),
       body: ListView.builder(
         itemCount: letrasList.length,
         itemBuilder: (BuildContext context, int index) {

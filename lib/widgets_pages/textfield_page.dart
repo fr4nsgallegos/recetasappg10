@@ -100,6 +100,7 @@ class TextfieldPage extends StatelessWidget {
                         MaterialPageRoute(
                           builder: (context) => ScrollPage(
                             correo: _emailController.text,
+                            bgColor: Colors.white,
                           ),
                         ),
                       );
