@@ -40,33 +40,52 @@ class CalculatorPage extends StatelessWidget {
                     Row(
                       children: [
                         BuildButton("7", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
                         BuildButton("8", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
                         BuildButton("9", Color(0xff202521), () {}),
-                        BuildButton("/", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
+                        BuildButton("/", Color(0XFF3C4A40), () {}),
                       ],
                     ),
                     Row(
                       children: [
                         BuildButton("4", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
                         BuildButton("5", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
                         BuildButton("6", Color(0xff202521), () {}),
-                        BuildButton("x", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
+                        BuildButton("x", Color(0XFF3C4A40), () {}),
                       ],
                     ),
                     Row(
                       children: [
                         BuildButton("1", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
                         BuildButton("2", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
                         BuildButton("3", Color(0xff202521), () {}),
-                        BuildButton("-", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
+                        BuildButton("-", Color(0XFF3C4A40), () {}),
                       ],
                     ),
                     Row(
                       children: [
                         BuildButton("0", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
                         BuildButton(".", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
                         BuildButton("<-", Color(0xff202521), () {}),
-                        BuildButton("=", Color(0xff202521), () {}),
+                        SizedBox(width: 4),
+                        BuildButton("+", Color(0XFF3C4A40), () {}),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        BuildButton("AC", Color(0XFF2F4B57), () {}),
+                        SizedBox(width: 4),
+                        BuildButton("=", Color(0XFF245136), () {}),
                       ],
                     ),
                   ],
@@ -95,7 +114,7 @@ class BuildButton extends StatelessWidget {
     return Expanded(
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
-          shape: CircleBorder(),
+          // shape: CircleBorder(),
           backgroundColor: bgColor,
           side: BorderSide.none,
         ),
@@ -103,7 +122,7 @@ class BuildButton extends StatelessWidget {
         child: Container(
           alignment: Alignment.center,
           height: MediaQuery.of(context).size.height / 10,
-          width: MediaQuery.of(context).size.width / 6,
+          width: MediaQuery.of(context).size.width / 8,
           child: Text(
             texto,
             style: TextStyle(color: Colors.white, fontSize: 30),
