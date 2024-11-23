@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:recetasappg10/widgets_pages/list_view_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -27,6 +30,13 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: Text("Ir a otra pantalla"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // SystemNavigator.pop(); //no es recomendable (usa fuera bruta)
+                exit(0);
+              },
+              child: Text("Cerrar app"),
             ),
           ],
         ),

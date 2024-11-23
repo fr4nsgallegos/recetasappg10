@@ -1,6 +1,7 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:recetasappg10/models/screen_model.dart';
+import 'package:recetasappg10/widgets/menu_lateral_widget.dart';
 
 class CurveNavigationPage extends StatefulWidget {
   @override
@@ -14,45 +15,7 @@ class _CurveNavigationPageState extends State<CurveNavigationPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(
-          //menu lateral a la izquierda
-          child: ListView(
-            children: [
-              DrawerHeader(
-                margin: EdgeInsets.all(0),
-                child: Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(32),
-                  child: FlutterLogo(
-                      // size: 20,
-                      ),
-                ),
-                decoration: BoxDecoration(color: Colors.black),
-              ),
-              //opciones del menu lateral
-              // ListTile(
-              //   leading: Icon(Icons.home),
-              //   title: Text("Home"),
-              //   onTap: () {},
-              // )
-
-              ...pageDetails
-                  .map(
-                    (e) => ListTile(
-                      leading: e.icono,
-                      title: Text(e.title),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => e.page),
-                        );
-                      },
-                    ),
-                  )
-                  .toList(),
-            ],
-          ),
-        ),
+        drawer: MenuLateralWidget(),
         // endDrawer: Drawer(), //menu lateral a la derecha
         appBar: AppBar(
           title: Text(
