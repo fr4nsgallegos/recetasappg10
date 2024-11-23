@@ -11,7 +11,12 @@ class _CalculatorPageState extends State<CalculatorPage> {
   String output = "";
   //resultado
   void buttonPressed(String textButton) {
-    buttonNumberPressed(textButton);
+    if (textButton == ".") {
+      buttonDecimal();
+    } else {
+      buttonNumberPressed(textButton);
+    }
+
     output = input;
     setState(() {});
   }
@@ -23,6 +28,13 @@ class _CalculatorPageState extends State<CalculatorPage> {
         : number == "."
             ? input += number
             : input = number;
+  }
+
+  void buttonDecimal() {
+    if (!input.contains(".")) {
+      // input = input + '.';
+      input += '.';
+    }
   }
 
   @override
