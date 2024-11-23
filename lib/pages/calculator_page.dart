@@ -17,7 +17,12 @@ class _CalculatorPageState extends State<CalculatorPage> {
   }
 
   void buttonNumberPressed(String number) {
-    input = number;
+    // input != "0" ? input = input + number : input = number;
+    input != "0"
+        ? input += number
+        : number == "."
+            ? input += number
+            : input = number;
   }
 
   @override
