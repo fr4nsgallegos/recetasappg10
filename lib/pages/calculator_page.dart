@@ -15,6 +15,8 @@ class _CalculatorPageState extends State<CalculatorPage> {
   void buttonPressed(String textButton) {
     if (textButton == ".") {
       buttonDecimal();
+    } else if (textButton == "AC") {
+      buttonAC();
     } else if (textButton == "+" ||
         textButton == "-" ||
         textButton == "/" ||
@@ -58,7 +60,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
   }
 
   void deleteDigito() {
-    input = input.substring(0, input.length - 1);
+    output.length != 0 ? input = input.substring(0, input.length - 1) : "0";
   }
 
   void buttonNumberPressed(String number) {
@@ -75,6 +77,12 @@ class _CalculatorPageState extends State<CalculatorPage> {
       // input = input + '.';
       input += '.';
     }
+  }
+
+  void buttonAC() {
+    input = output = "0";
+    operator = "";
+    num1 = num2 = 0.0;
   }
 
   @override
