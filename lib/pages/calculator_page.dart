@@ -1,6 +1,25 @@
 import 'package:flutter/material.dart';
 
-class CalculatorPage extends StatelessWidget {
+class CalculatorPage extends StatefulWidget {
+  @override
+  State<CalculatorPage> createState() => _CalculatorPageState();
+}
+
+class _CalculatorPageState extends State<CalculatorPage> {
+  String input = "";
+  //lo que voy ingresando
+  String output = "";
+  //resultado
+  void buttonPressed(String textButton) {
+    buttonNumberPressed(textButton);
+    output = input;
+    setState(() {});
+  }
+
+  void buttonNumberPressed(String number) {
+    input = number;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -21,7 +40,7 @@ class CalculatorPage extends StatelessWidget {
                 ),
               ),
               child: Text(
-                "100",
+                output,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 65,
@@ -39,53 +58,71 @@ class CalculatorPage extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        BuildButton("7", Color(0xff202521), () {}),
+                        BuildButton(
+                            "7", Color(0xff202521), () => buttonPressed("7")),
                         SizedBox(width: 4),
-                        BuildButton("8", Color(0xff202521), () {}),
+                        BuildButton(
+                            "8", Color(0xff202521), () => buttonPressed("8")),
                         SizedBox(width: 4),
-                        BuildButton("9", Color(0xff202521), () {}),
+                        BuildButton(
+                            "9", Color(0xff202521), () => buttonPressed("9")),
                         SizedBox(width: 4),
-                        BuildButton("/", Color(0XFF3C4A40), () {}),
+                        BuildButton(
+                            "/", Color(0XFF3C4A40), () => buttonPressed("/")),
                       ],
                     ),
                     Row(
                       children: [
-                        BuildButton("4", Color(0xff202521), () {}),
+                        BuildButton(
+                            "4", Color(0xff202521), () => buttonPressed("4")),
                         SizedBox(width: 4),
-                        BuildButton("5", Color(0xff202521), () {}),
+                        BuildButton(
+                            "5", Color(0xff202521), () => buttonPressed("5")),
                         SizedBox(width: 4),
-                        BuildButton("6", Color(0xff202521), () {}),
+                        BuildButton(
+                            "6", Color(0xff202521), () => buttonPressed("6")),
                         SizedBox(width: 4),
-                        BuildButton("x", Color(0XFF3C4A40), () {}),
+                        BuildButton(
+                            "x", Color(0XFF3C4A40), () => buttonPressed("x")),
                       ],
                     ),
                     Row(
                       children: [
-                        BuildButton("1", Color(0xff202521), () {}),
+                        BuildButton(
+                            "1", Color(0xff202521), () => buttonPressed("1")),
                         SizedBox(width: 4),
-                        BuildButton("2", Color(0xff202521), () {}),
+                        BuildButton(
+                            "2", Color(0xff202521), () => buttonPressed("2")),
                         SizedBox(width: 4),
-                        BuildButton("3", Color(0xff202521), () {}),
+                        BuildButton(
+                            "3", Color(0xff202521), () => buttonPressed("3")),
                         SizedBox(width: 4),
-                        BuildButton("-", Color(0XFF3C4A40), () {}),
+                        BuildButton(
+                            "-", Color(0XFF3C4A40), () => buttonPressed("-")),
                       ],
                     ),
                     Row(
                       children: [
-                        BuildButton("0", Color(0xff202521), () {}),
+                        BuildButton(
+                            "0", Color(0xff202521), () => buttonPressed("0")),
                         SizedBox(width: 4),
-                        BuildButton(".", Color(0xff202521), () {}),
+                        BuildButton(
+                            ".", Color(0xff202521), () => buttonPressed(".")),
                         SizedBox(width: 4),
-                        BuildButton("<-", Color(0xff202521), () {}),
+                        BuildButton(
+                            "<-", Color(0xff202521), () => buttonPressed("<-")),
                         SizedBox(width: 4),
-                        BuildButton("+", Color(0XFF3C4A40), () {}),
+                        BuildButton(
+                            "+", Color(0XFF3C4A40), () => buttonPressed("+")),
                       ],
                     ),
                     Row(
                       children: [
-                        BuildButton("AC", Color(0XFF2F4B57), () {}),
+                        BuildButton(
+                            "AC", Color(0XFF2F4B57), () => buttonPressed("AC")),
                         SizedBox(width: 4),
-                        BuildButton("=", Color(0XFF245136), () {}),
+                        BuildButton(
+                            "=", Color(0XFF245136), () => buttonPressed("=")),
                       ],
                     ),
                   ],
