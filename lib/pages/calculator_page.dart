@@ -6,19 +6,59 @@ class CalculatorPage extends StatefulWidget {
 }
 
 class _CalculatorPageState extends State<CalculatorPage> {
-  String input = "";
-  //lo que voy ingresando
-  String output = "";
-  //resultado
+  String input = ""; //lo que voy ingresando
+  String output = ""; //resultado
+  String operator = "";
+  double num1 = 0.0;
+  double num2 = 0.0;
+
   void buttonPressed(String textButton) {
     if (textButton == ".") {
       buttonDecimal();
+    } else if (textButton == "+" ||
+        textButton == "-" ||
+        textButton == "/" ||
+        textButton == "x") {
+      if (operator == "" && !input.isEmpty) {
+        //ayuda a saber si el primer botón presionado es un operador
+        num1 = double.parse(input);
+        operator = textButton;
+        input = "0";
+      }
+    } else if (textButton == "=") {
+      num2 = double.parse(input);
+      igualFunction();
+      num1 = 0.0;
+      num2 = 0.0;
+      operator = "";
+      input = output; //realizo esto para poder ver el resultado en la pantalla
+    } else if (textButton == "<-") {
+      deleteDigito();
     } else {
       buttonNumberPressed(textButton);
     }
 
     output = input;
     setState(() {});
+  }
+
+  void igualFunction() {
+    switch (operator) {
+      case "+":
+        output = (num1 + num2).toString();
+      case "-":
+        output = (num1 - num2).toString();
+      case "/":
+        output = (num1 / num2).toString();
+      case ("x"):
+        output = (num1 * num2).toString();
+      default:
+        break;
+    }
+  }
+
+  void deleteDigito() {
+    input = input.substring(0, input.length - 1);
   }
 
   void buttonNumberPressed(String number) {
